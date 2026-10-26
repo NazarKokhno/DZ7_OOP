@@ -35,7 +35,6 @@ public:
 		delete[] name;
 		delete[] color;
 		delete[] size;
-
 	}
 
 };
