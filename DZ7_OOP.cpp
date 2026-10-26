@@ -1,38 +1,99 @@
 ﻿#include <iostream>
 #include <windows.h>
+#include <cstring>
 
 using namespace std;
 
 class Overcoat
 {
 private:
-	char* name;
+	char* type;
 	char* color;
 	char* size;
+	double price;
 public:
-	Overcoat(const char* name, const char* color, const char* size)
+	Overcoat() :type(nullptr), color(nullptr), size(nullptr),price(0) {}
+	
+	Overcoat(const char* type, const char* color, const char* size,double price)
+		:type(nullptr), color(nullptr), size(nullptr)
 	{
-		this->name = new char[strlen(name) + 1];
-		strcpy_s(this->name, strlen(name) + 1, name);
+		this->price = price;
 		
-		this->color = new char[strlen(color) + 1];
-		strcpy_s(this->color, strlen(color) + 1, color);
+		if (type != nullptr)
 		
-		this->size = new char[strlen(size) + 1];
-		strcpy_s(this->size, strlen(size) + 1, size);
+		{
+			this->type = new char[strlen(type) + 1];
+			strcpy_s(this->type, strlen(type) + 1, type);
+		}
+		
+		if (color != nullptr)
+		{
+			this->color = new char[strlen(color) + 1];
+			strcpy_s(this->color, strlen(color) + 1, color);
+		}
+		
+		if (size != nullptr)
+		{
+			this->size = new char[strlen(size) + 1];
+			strcpy_s(this->size, strlen(size) + 1, size);
+		}
 	}
 	
+	Overcoat(const Overcoat& other)
+		:type(nullptr), color(nullptr), size(nullptr)
+	{
+		this->price = other.price;
+
+		if (other.type != nullptr)
+		{
+			this->type = new char[strlen(other.type) + 1];
+			strcpy_s(this->type, strlen(other.type) + 1, other.type);
+
+		}
+
+		if (other.color != nullptr)
+		{
+			this->color = new char[strlen(other.color) + 1];
+			strcpy_s(this->color, strlen(other.color) + 1, other.color);
+
+		}
+
+		if (other.size != nullptr)
+		{
+			this->size = new char[strlen(other.size) + 1];
+			strcpy_s(this->size, strlen(other.size) + 1, other.size);
+
+		}
+
+	
+	}
+
+	bool operator==(const Overcoat& other)
+	{
+		
+		if (type == nullptr || other.type == nullptr)
+			return type == other.type;
+
+		return strcmp(this->type, other.type) == 0;
+	}
 	
 	void show()
 	{
-		cout << "Name: " << name << std::endl;
-		cout << "Color: " << color << std::endl;
-		cout << "Size: " << size << std::endl;
+		if (type == nullptr || color == nullptr || size == nullptr)
+		{
+			cout << "Error: Some data is missing!" << endl;
+			return;
+		}
+
+		cout << "Name: " << type << endl;
+		cout << "Color: " << color << endl;
+		cout << "Size: " << size << endl;
+		cout << "Price: " << price << endl;
 	}
 	
 	~Overcoat()
 	{
-		delete[] name;
+		delete[] type;
 		delete[] color;
 		delete[] size;
 	}
@@ -41,11 +102,12 @@ public:
 
 int main()
 {
-	Overcoat a("Classic Coat", "Black", "L");
-	Overcoat b("Winter Coat", "Brown", "XL");
+	Overcoat a("Classic Coat", "Black", "L",12);
+	Overcoat b("Winter Coat", "Brown", "XL",12);
+	
+	
 
-	a.show();
-	b.show();
+
 
 }
 
