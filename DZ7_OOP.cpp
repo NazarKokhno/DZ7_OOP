@@ -159,7 +159,7 @@ int main()
 	bool result2 = a > b;
 	
 	cout << "\na.type == b.type? " << (result1 ? "true" : "false"); // false
-	cout << "\na.price > b.price? " << (result2 ? "true" : "false") << endl; // true
+	cout << "\na.price > b.price? " << (result2 ? "true" : "false") << endl; // false
 	cout << "\na: ";
 	
 	a.show();
