@@ -114,6 +114,9 @@ public:
 	
 	bool operator>(const Overcoat& other) const
 	{
+		if (!(*this == other))
+			return false;
+
 		return this->price > other.price;
 	}
 
@@ -155,6 +158,11 @@ int main()
 
 	bool result1 = a == b;
 	bool result2 = a > b;
+	
+	if (a == b)
+	{
+		result2 = a > b;
+	}
 
 	cout << "\na.type == b.type? " << (result1 ? "true" : "false"); // false
 	cout << "\na.price > b.price? " << (result2 ? "true" : "false") << endl; // true
