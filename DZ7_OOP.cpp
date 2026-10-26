@@ -148,6 +148,7 @@ int main()
 	Overcoat b("Winter Coat", "Brown", "XL",200);
 	cout << "a: ";
 	a.show();
+	
 	cout << "\nb: ";
 	b.show();
 
@@ -158,14 +159,19 @@ int main()
 	cout << "\na.type == b.type? " << (result1 ? "true" : "false"); // false
 	cout << "\na.price > b.price? " << (result2 ? "true" : "false") << endl; // true
 	cout << "\na: ";
+	
 	a.show();
+	
 	cout << "\na = b" << endl;
 	a = b;
 	cout << "\na: ";
+	
 	a.show();
+	
 	result1 = a == b;
+	result2 = a > b;
+	
 	cout << "\na.type == b.type? " << (result1 ? "true" : "false") << endl; // true
-
 	cout << "a.price > b.price? " << (result2 ? "true" : "false") << endl; // false
 }
 
